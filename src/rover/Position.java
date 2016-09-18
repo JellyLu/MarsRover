@@ -1,8 +1,8 @@
 package rover;
 
 public class Position {
-    private final int x;
-    private final int y;
+    private int x;
+    private int y;
     private static int STEP = 1;
 
     public Position(int x, int y) {
@@ -10,17 +10,21 @@ public class Position {
         this.y = y;
     }
 
-    public Position move(Direction direction) {
-        if (direction.equals(Direction.NORTH))
-            return new Position(x, y + STEP);
-
-        if (direction.equals(Direction.SOUTH))
-            return new Position(x, y - STEP);
-
-        if (direction.equals(Direction.EAST))
-            return new Position(x + STEP, y);
-
-        return new Position(x - STEP, y);
+    public void move(Direction direction) {
+        switch (direction) {
+            case NORTH:
+                y = y + STEP;
+                break;
+            case SOUTH:
+                y = y - STEP;
+                break;
+            case EAST:
+                x = x + STEP;
+                break;
+            case WEST:
+                x = x - STEP;
+                break;
+        }
     }
 
     @Override

@@ -18,32 +18,14 @@ public class MarsRover {
         String[] commands = convertInputIntoCommands(input);
 
         for (String command : commands) {
-            if (command.equals("M")) {
-                move();
-            } else if (command.equals("R")) {
-                turnRight();
-            } else if (command.equals("L")) {
-                turnLeft();
-            }
+            Command.valueOf(command).excute(this);
         }
 
         return asString();
     }
 
-    private void move() {
-       position = position.move(direction);
-    }
-
     private String asString() {
         return position.toString() + " " + direction.getSymbol();
-    }
-
-    private void turnLeft() {
-        direction = direction.getLeft();
-    }
-
-    private void turnRight() {
-        direction = direction.getRight();
     }
 
     private static String[] convertInputIntoCommands(String input) {
@@ -62,5 +44,15 @@ public class MarsRover {
         }
     }
 
+    public Position getPosition() {
+        return position;
+    }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 }

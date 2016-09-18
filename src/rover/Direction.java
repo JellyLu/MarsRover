@@ -25,7 +25,6 @@ public enum  Direction {
     }
 
 
-
     public Direction getLeft(){
         return this.left;
     }
